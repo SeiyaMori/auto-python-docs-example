@@ -23,7 +23,7 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon'
 ]
-templates_path = ['_templates']
+templates_path = ['sphinx_rtd_theme']
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 
