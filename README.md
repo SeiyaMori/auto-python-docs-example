@@ -134,3 +134,78 @@ my_module
 Inside a terminal: 
 
 11. Navigate to the **docs** and run `.\make.bat html` (this command is for Windows OS). This will generate your documentation which can be found in the **docs/_build** folder.
+12. Commit and push your changes to the remote repo.
+
+### Task 4 - Set up Github Workflow
+
+In editor:
+1. Create new folders called `.github/workflows`.
+2. Inside the `workflows`  folder, create a new file called `build-sphinx-docs.yml`.
+3. Copy and paste the following code into the new file. Save the file.
+
+```yml
+# This is a basic workflow to help you get started with Actions
+
+name: build-sphinx-docs
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs: 
+  # This workflow contains a single job called "build"
+  build: 
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2
+        with:
+           python-version: "3.10"
+      # Runs a single command using the runners shell
+      - name: Run a one-line script
+        run: echo Hello, world!
+        
+      - name: Install dependencies
+        run: | 
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Build HTML
+        run: | 
+          cd docs/
+          make html
+      - name: Run ghp-import
+        run: | 
+          ghp-import -n -p -f docs/_build/html
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+```
+
+4. At the root of the branch, create a new file called `requirements.txt` and paste the following into that file:
+
+```
+sphinx
+sphinx_rtd_theme
+ghp-import
+pytest
+```
+
+5. Commit and push changes to the remote repo.
+6. Merge the development branch into the `main` branch (only then will you see the new Workflow in the Actions tab in Github).
