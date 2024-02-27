@@ -1,6 +1,13 @@
 # Auto generate and deploy Python documentation to Github Pages using Sphinx
 
-## Credit to [ ]
+## Credits
+
+Thanks to https://github.com/RGGH/jubilant-lamp on which this guide is based. See his guides below:
+
+- https://redandgreen.co.uk/sphinx/python-code/
+- https://redandgreen.co.uk/sphinx-to-github-pages-via-github-actions/python-code/
+
+And thanks to https://github.com/niketagrawal for the original Github workflow yml file.
 
 ## Pre-requisites
 
