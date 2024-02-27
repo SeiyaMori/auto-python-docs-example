@@ -208,4 +208,11 @@ pytest
 ```
 
 5. Commit and push changes to the remote repo.
-6. Merge the development branch into the `main` branch (only then will you see the new Workflow in the Actions tab in Github).
+
+In Github:
+
+6. Make sure your permission settings allow the Github Actions to read and write. Go to Settings > Actions > General > Workflow permissions and enable **Read and write permissions**. Save these settings.
+
+7. Merge the development branch into the `main` branch (only then will you see the new Workflow in the Actions tab in Github).
+
+> **Note:** When you check the Actions tab, you may see that the `build-sphinx-docs` workflow may have failed. This may occur if you pulled the main branch into your development branch before you created your pull request (as per common practice). By pulling the main branch, you will have automatically triggered the workflow. You can ignore this.
